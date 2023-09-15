@@ -26,7 +26,7 @@ declare @DailySP as Date SET @DailySP = DATEADD(DAY,-@d,@BaseDay)
 		   END
 		DECLARE @Param_MTDIndicator	    AS DATE =					 Dateadd(Day,1,EOMonth(dateadd(MONTH,-@m,@BaseDay))),
 			    @Param_QTDIndicator	    AS DATE = DATEFROMPARTS(YEAR(Dateadd(day,-@m,@BaseDay)),((MONTH(dateadd(day,-@m,@BaseDay))-1)/3)*3+1,1),
-			    @Param_SemiYTDIndicator AS DATE = DATEFROMPARTS(YEAR(Dateadd(day,-@m,@BaseDay)),((MONTH(dateadd(day,-@m,@BaseDay)))  /6)*6+1,1),
+			    @Param_SemiYTDIndicator AS DATE = DATEFROMPARTS(YEAR(Dateadd(day,-@m,@BaseDay)),(((MONTH(dateadd(day,-@m,@BaseDay)))-1)  /6)*6+1,1),
 			    @Param_YTDIndicator	    AS DATE = DATEFROMPARTS(YEAR(Dateadd(day,-@y,@BaseDay)),1,1)
 CREATE TABLE #TempDateHours (HourlyDateTime DATETIME);
 DECLARE	 @StartDateParameter AS DATETIME = DATEFROMPARTS(YEAR(DATEADD(DAY,-@y,cast(@BaseDay as DATETIME))),1,1)--DATEADD(DAY,-1,cast(@BaseDay as DATETIME))
